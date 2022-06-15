@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                            "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.boardbackend.dao.PostDao">
+    <insert id="insert" parameterType="PostModel" useGeneratedKeys="true" keyProperty="id">
+        insert into board (id, title, content, date) values (#{id}, #{title}, #{content}, #{date})
+    </insert>
+
+    <select id="getPosts" resultType="PostModel">
+        SELECT * FROM BOARD
+    </select>
+
+    <select id="viewPost" resultType="PostModel" parameterType="int">
+        SELECT * FROM BOARD WHERE id= #{id}
+    </select>
+
+    <delete id="deletePost">
+        DELETE FROM BOARD WHERE id = #{id}
+    </delete>
+</mapper>

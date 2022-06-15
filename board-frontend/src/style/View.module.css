@@ -1,0 +1,13 @@
+
+.view_div{
+    width: 45%;
+    margin: 0 auto;
+    text-align: center;
+}
+.content_div{
+    margin-top: 20px;
+}
+.btn{
+    width: 100%;
+    text-align: right;
+}
