@@ -38,12 +38,13 @@ function View() {
             url: `http://localhost:8080/view/${id}`,
             method: 'get'
         }).then((res) => {
-            console.log(res.data);
 
             // 가져온 데이터 set
             setTitle(res.data.title);
             setContent(res.data.content);
             setDate(res.data.date);
+        }).catch((error) => {
+            console.log(error)
         })
     }, [id])
 

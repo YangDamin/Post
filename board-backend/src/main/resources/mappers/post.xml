@@ -8,7 +8,7 @@
     </insert>
 
     <select id="getPosts" resultType="PostModel">
-        SELECT * FROM BOARD
+        SELECT * FROM BOARD ORDER BY id DESC
     </select>
 
     <select id="viewPost" resultType="PostModel" parameterType="int">
@@ -18,4 +18,16 @@
     <delete id="deletePost">
         DELETE FROM BOARD WHERE id = #{id}
     </delete>
+
+    <select id="infoPost" resultType="PostModel" parameterType="int">
+        SELECT * FROM BOARD WHERE id= #{id}
+    </select>
+
+    <update id="updatePost" parameterType="PostModel">
+        UPDATE BOARD set
+        title = #{title},
+        content = #{content},
+        date = #{date}
+        WHERE id = #{id}
+    </update>
 </mapper>

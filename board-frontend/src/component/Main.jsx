@@ -4,6 +4,7 @@ import { AgGridReact} from "ag-grid-react";
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import axios from "axios";
+import {useHistory} from "react-router-dom";
 
 
 function Main() {
@@ -37,9 +38,11 @@ function Main() {
         return{
             title: data.title,
             date : data.date,
-            id : data.id
+            id : data.id,
         }
     })
+
+    // const history = useHistory();
 
     return (
         <div className={style.main_div}>
@@ -55,6 +58,15 @@ function Main() {
                     onRowClicked = {(e) => {
                         // console.log(e.data.id)
                         window.location = `/view/${e.data.id}`;
+
+                        // history.push({
+                        //     pathname : `/view/${e.data.id}`,
+                        //     state: {
+                        //         title : e.data.title,
+                        //         date : e.data.date,
+                        //         content : e.data.content
+                        //     }
+                        // })
                     }}
                 >
                 </AgGridReact>

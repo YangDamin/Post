@@ -37,4 +37,16 @@ public class MainController {
     public void deletePost(@PathVariable("id") int id){
         postDao.deletePost(id);
     }
+
+    // 게시물 정보 보내기
+    @GetMapping("/update/{id}")
+    public PostModel infoPost(@PathVariable("id") int id){
+        return postDao.infoPost(id);
+    }
+
+    // 게시물 수정하기
+    @PutMapping("/update/{id}")
+    public void updatePost(@RequestBody PostModel postModel){
+        postDao.updatePost(postModel);
+    }
 }

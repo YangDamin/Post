@@ -43,10 +43,9 @@ function Write() {
                 "date" : date.toLocaleDateString()
             }
         }).then((res) => {
-            console.log("작성 완료");
             Swal.fire(
-                '작성 완료!',
                 '',
+                '작성 완료!',
                 'success'
             )
             setTimeout(function () {
