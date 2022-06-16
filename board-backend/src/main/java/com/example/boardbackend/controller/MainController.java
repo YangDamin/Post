@@ -29,6 +29,9 @@ public class MainController {
     // 게시물 상세
     @GetMapping("/view/{id}")
     public PostModel viewPost(@PathVariable("id") int id){
+        // 게시물 조회수 증가
+        postDao.updateViewCnt(postDao.viewPost(id));
+
         return postDao.viewPost(id);
     }
 

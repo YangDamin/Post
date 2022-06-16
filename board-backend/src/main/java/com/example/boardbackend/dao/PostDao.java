@@ -13,4 +13,5 @@ public interface PostDao {
     void deletePost(int id);
     PostModel infoPost(int id);         // 게시물 내용 전달
     void updatePost(PostModel postModel);       // 게시물 수정
+    void updateViewCnt(PostModel postModel);    // 게시물 조회수 증가
 }

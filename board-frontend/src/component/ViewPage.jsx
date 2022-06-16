@@ -10,6 +10,7 @@ const useViewStore = create((set) => ({
     title : '',
     content : '',
     date : '',
+    viewCnt : 0,
     setTitle : (t) => {
         set({title: t});
     },
@@ -18,6 +19,9 @@ const useViewStore = create((set) => ({
     },
     setDate : (d) => {
         set({date: d});
+    },
+    setViewCnt : (c) => {
+        set({viewCnt : c});
     }
 }))
 
@@ -31,6 +35,9 @@ const ViewPage = () => {
     const setContent = useViewStore((state) => state.setContent);
     const date = useViewStore((state) => state.date);
     const setDate = useViewStore((state) => state.setDate);
+    const viewCnt = useViewStore((state) => state.viewCnt);
+    const setViewCnt = useViewStore((state) => state.setViewCnt);
+
 
     // 게시물 id에 해당하는 게시물 data 가져오기
     useEffect(() => {
@@ -43,6 +50,7 @@ const ViewPage = () => {
             setTitle(res.data.title);
             setContent(res.data.content);
             setDate(res.data.date);
+            setViewCnt(res.data.viewCnt);
         }).catch((error) => {
             console.log(error)
         })
@@ -84,12 +92,20 @@ const ViewPage = () => {
         window.location = `/update/${id}`;
     }
 
+    // 목록으로 돌아가기 버튼
+    function backClick(e) {
+        e.preventDefault();
+        window.location = '/';
+    }
+
     const viewPageViewProps = {
         title,
         date,
         updateClick,
         deleteClick,
-        content
+        content,
+        backClick,
+        viewCnt
     }
 
     return <ViewPageView {...viewPageViewProps} />;

@@ -28,8 +28,9 @@ const MainPage = () => {
     }, [])
 
     const columnDefs = [
-        {headerName: '제목', field: "title", width: 1000},
-        {headerName: '작성 날짜', field: "date", width: 340, sort: 'desc'}
+        {headerName: '제목', field: "title", width: 800},
+        {headerName: '작성 날짜', field: "date", width: 200, sort: 'desc'},
+        {headerName: '조회수', field: "viewCnt", width: 150}
     ]
 
     const rowData = dataList.map((data) => {
@@ -37,6 +38,7 @@ const MainPage = () => {
             title: data.title,
             date: data.date,
             id: data.id,
+            viewCnt : data.viewCnt
         }
     })
 

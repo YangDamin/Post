@@ -16,7 +16,7 @@ const MainPageView = ({
             <button type="button" className="btn btn-white btn-outline-primary" onClick={onClick}>글쓰기</button>
 
             {/*    aggrid    */}
-            <div className="ag-theme-alpine" style={{width: '70vw', height:'48vh', margin:"25px 0 0 10vw"}}>
+            <div className="ag-theme-alpine" style={{width: '60vw', height:'48vh', margin:"25px 0 0 15vw"}}>
                 <AgGridReact
                     headerHeight='40'
                     columnDefs={columnDefs}
