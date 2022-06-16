@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import style from '../style/Write.module.css';
 import create from 'zustand';
 import axios from "axios";
 import Swal from "sweetalert2";
+import WritePageView from "./WritePageView";
 
 // zustand
 const useWriteStore = create((set) => ({
@@ -16,7 +16,7 @@ const useWriteStore = create((set) => ({
     }
 }))
 
-function Write() {
+const WritePage = () => {
     const title = useWriteStore((state) => state.title);
     const setTitle = useWriteStore((state) => state.setTitle);
 
@@ -56,19 +56,13 @@ function Write() {
         })
     }
 
-    return(
-        <div className={style.write_div}>
-            <h3>글 쓰기</h3>
-            <input className={style.title} type='text' placeholder='제목' value={title} onChange={(e) =>{ setTitle(e.target.value); }}/>
-            <br/>
-            <textarea rows="18" style={{ "width": "50%", "textAlign": "left" }} onChange={(e) =>{
-                var contents = e.target.value;
-                contents = contents.replace(/(\n|\r\n)/g, '<br>');      // 줄띄기하면 <br>로 저장되게
-                setContent(contents); }}></textarea>
-            <br/>
-            <button type="button" className="btn btn-white btn-outline-primary mt-2" onClick={onClick}>작성</button>
-        </div>
-    )
+    const writePageViewProps = {
+        setTitle,
+        setContent,
+        onClick
+    };
+
+    return <WritePageView {...writePageViewProps} />;
 }
 
-export default Write;
+export default WritePage;

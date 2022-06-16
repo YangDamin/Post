@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import style from '../style/Write.module.css';
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import create from "zustand";
 import Swal from "sweetalert2";
+import UpdatePageView from "./UpdatePageView";
 
 
 // zustand
@@ -18,7 +18,7 @@ const useUpdateStore = create((set) => ({
     }
 }))
 
-function Update() {
+const UpdatePage = () => {
 
     const {id} = useParams();
 
@@ -48,7 +48,7 @@ function Update() {
     }, [id])
 
     // 수정 버튼 클릭 이벤트
-    function updateOnClick(e) {
+    const updateOnClick= (e) => {
         e.preventDefault();
 
         let date = new Date();
@@ -76,20 +76,16 @@ function Update() {
         })
     }
 
+    const updatePageViewProps = {
+        title,
+        content,
+        setUpdateTitle,
+        setUpdateContent,
+        updateOnClick
+    }
 
-    return(
-       <div className={style.write_div}>
-            <h3>글 수정</h3>
-            <input className={style.title} type='text' placeholder='제목' defaultValue={title} onChange={(e) =>{ setUpdateTitle(e.target.value); }} />
-            <br/>
-            <textarea rows="18" style={{ "width": "50%", "textAlign": "left" }} defaultValue={content} onChange={(e) =>{
-                var contents = e.target.value;
-                contents = contents.replace(/(\n|\r\n)/g, '<br>');      // 줄띄기하면 <br>로 저장되게
-                setUpdateContent(contents); }}></textarea>
-            <br/>
-            <button type="button" className="btn btn-white btn-outline-primary mt-2" onClick={updateOnClick}>수정</button>
-        </div>
-    )
+    return <UpdatePageView {...updatePageViewProps}/>;
+
 }
 
-export default Update;
+export default UpdatePage;

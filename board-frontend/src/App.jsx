@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./component/Header";
-import Main from "./component/Main";
-import Write from "./component/Write";
-import View from "./component/View";
-import Update from "./component/Update";
+import MainPage from "./component/MainPage";
+import WritePage from "./component/WritePage";
+import ViewPage from "./component/ViewPage";
+import UpdatePage from "./component/UpdatePage";
 
 class App extends React.Component {
     render() {
@@ -14,10 +14,10 @@ class App extends React.Component {
                 <div className='App'>
                     <Header/>
                     <Routes>
-                        <Route path="/" element={<Main/>}/>
-                        <Route path="/write" element={<Write/>}/>
-                        <Route path="/view/:id" element={<View/>}/>
-                        <Route path="/update/:id" element={<Update/>}/>
+                        <Route path="/" element={<MainPage/>}/>
+                        <Route path="/write" element={<WritePage/>}/>
+                        <Route path="/view/:id" element={<ViewPage/>}/>
+                        <Route path="/update/:id" element={<UpdatePage/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>
