@@ -4,7 +4,7 @@
 
 <mapper namespace="com.example.boardbackend.dao.PostDao">
     <insert id="insert" parameterType="PostModel" useGeneratedKeys="true" keyProperty="id">
-        insert into board (id, title, content, date, viewCnt) values (#{id}, #{title}, #{content}, #{date}, #{viewCnt})
+        insert into board (id, title, content, date, viewCnt, recommendCnt) values (#{id}, #{title}, #{content}, #{date}, #{viewCnt}, #{recommendCnt})
     </insert>
 
     <select id="getPosts" resultType="PostModel">
@@ -34,6 +34,12 @@
     <update id="updateViewCnt" parameterType="PostModel">
         UPDATE BOARD set
         viewCnt = #{viewCnt}+1
+        WHERE id = #{id}
+    </update>
+
+    <update id="increaseRecommend" parameterType="int">
+        UPDATE BOARD set
+        recommendCnt = #{recommendCnt}+1
         WHERE id = #{id}
     </update>
 </mapper>

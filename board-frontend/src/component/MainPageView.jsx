@@ -10,30 +10,24 @@ const MainPageView = ({
     columnDefs,
     rowData
 }) => {
-    console.log("column"+columnDefs);
+
     return (
         <div className={style.main_div}>
-            <button type="button" className="btn btn-white btn-outline-primary" onClick={onClick}>글쓰기</button>
+            <button type="button" className="btn btn-white btn-outline-primary" onClick={onClick}>
+                글쓰기
+            </button>
 
             {/*    aggrid    */}
-            <div className="ag-theme-alpine" style={{width: '60vw', height:'48vh', margin:"25px 0 0 15vw"}}>
+            <div className="ag-theme-alpine" style={{width: '60vw', height:'60vh', margin:"25px 0 0 15vw"}}>
                 <AgGridReact
                     headerHeight='40'
                     columnDefs={columnDefs}
                     rowData={rowData}
 
+                    // 행 클릭 시, 해당 게시물로 이동
                     onRowClicked = {(e) => {
                         // console.log(e.data.id)
                         window.location = `/view/${e.data.id}`;
-
-                        // history.push({
-                        //     pathname : `/view/${e.data.id}`,
-                        //     state: {
-                        //         title : e.data.title,
-                        //         date : e.data.date,
-                        //         content : e.data.content
-                        //     }
-                        // })
                     }}
                 >
                 </AgGridReact>

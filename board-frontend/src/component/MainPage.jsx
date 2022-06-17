@@ -6,6 +6,16 @@ import MainPageView from "./MainPageView";
 
 
 const MainPage = () => {
+
+    // AGGrid
+    const [dataList, setDataList] = useState([]);       // 게시물 data
+    const columnDefs = [
+        {headerName: '제목', field: "title", width: 700, filter: 'agTextColumnFilter', floatingFilter : true},
+        {headerName: '작성 날짜', field: "date", width: 200, sort: 'desc'},
+        {headerName: '조회수', field: "viewCnt", width: 150},
+        {headerName: '추천', field: "recommendCnt", width: 100}
+    ]
+
     // 글쓰기 버튼 큻릭 시 이벤트
     const onClick = (e) => {
         e.preventDefault();
@@ -13,8 +23,21 @@ const MainPage = () => {
         window.location.href = "/write";
     }
 
-    // AGGrid
-    const [dataList, setDataList] = useState([]);       // 게시물 data
+    const rowData = dataList.map((data) => {
+        return {
+            title: data.title,
+            date: data.date,
+            id: data.id,
+            viewCnt : data.viewCnt,
+            recommendCnt : data.recommendCnt
+        }
+    })
+
+    const mainPageViewProps = {
+        onClick,
+        columnDefs,
+        rowData
+    };
 
     useEffect(() => {
         axios({
@@ -26,27 +49,6 @@ const MainPage = () => {
             console.log(error);
         })
     }, [])
-
-    const columnDefs = [
-        {headerName: '제목', field: "title", width: 800},
-        {headerName: '작성 날짜', field: "date", width: 200, sort: 'desc'},
-        {headerName: '조회수', field: "viewCnt", width: 150}
-    ]
-
-    const rowData = dataList.map((data) => {
-        return {
-            title: data.title,
-            date: data.date,
-            id: data.id,
-            viewCnt : data.viewCnt
-        }
-    })
-
-    const mainPageViewProps = {
-        onClick,
-        columnDefs,
-        rowData
-    };
 
     return <MainPageView {...mainPageViewProps}/>;
 }

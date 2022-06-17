@@ -13,4 +13,5 @@ public class PostModel {            // 게시물
     private String content;
     private String date;
     private int viewCnt;
+    private int recommendCnt;
 }

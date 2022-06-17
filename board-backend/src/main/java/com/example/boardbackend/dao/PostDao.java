@@ -2,6 +2,7 @@ package com.example.boardbackend.dao;
 
 import com.example.boardbackend.model.PostModel;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface PostDao {
     PostModel infoPost(int id);         // 게시물 내용 전달
     void updatePost(PostModel postModel);       // 게시물 수정
     void updateViewCnt(PostModel postModel);    // 게시물 조회수 증가
+    void increaseRecommend(PostModel postModel);       // 추천 버튼 기능
 }

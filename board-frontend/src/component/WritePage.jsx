@@ -3,18 +3,8 @@ import create from 'zustand';
 import axios from "axios";
 import Swal from "sweetalert2";
 import WritePageView from "./WritePageView";
+import useWriteStore from "../zustand/useWriteStore";
 
-// zustand
-const useWriteStore = create((set) => ({
-    title : '',             // 제목
-    content : '',            // 내용
-    setTitle: (t) => {
-        set({title : t});
-    },
-    setContent: (c) => {
-        set({content: c});
-    }
-}))
 
 const WritePage = () => {
     const title = useWriteStore((state) => state.title);
@@ -24,42 +14,55 @@ const WritePage = () => {
     const setContent = useWriteStore((state) => state.setContent);
 
 
-    function onClick(e) {
+    const onClick = (e) => {
         e.preventDefault();
-
-        // const formData = new FormData();
-        // formData.append("title", title);
-        // formData.append("content", content);
 
         // 작성 날짜
         let date = new Date();
 
-        axios({
-            url: 'http://localhost:8080/write',
-            method: "post",
-            data: {
-                "title": title,
-                "content": content,
-                "date" : date.toLocaleDateString()
-            }
-        }).then((res) => {
+        // 제목 및 내용이 입력되어 있지 않으면 막기
+        if(title === '' || content === ''){
             Swal.fire(
                 '',
-                '작성 완료!',
-                'success'
+                '내용 입력해주세요.',
+                'warning'
             )
-            setTimeout(function () {
-                window.location ='/';
-            }, 2000)
-        }).catch((error) => {
-            console.log(error);
-        })
+        } else {
+            axios({
+                url: 'http://localhost:8080/write',
+                method: "post",
+                data: {
+                    "title": title,
+                    "content": content,
+                    "date" : date.toLocaleDateString()
+                }
+            }).then((res) => {
+                Swal.fire(
+                    '',
+                    '작성 완료!',
+                    'success'
+                )
+                setTimeout( () => {
+                    window.location ='/';
+                }, 2000)
+            }).catch((error) => {
+                console.log(error);
+            })
+        }
     }
+
+
+    const onChange = (e) => {
+        var contents = e.target.value;
+        contents = contents.replace(/(\n|\r\n)/g, '<br>');      // 줄띄기하면 <br>로 저장되게
+        setContent(contents);
+    }
+
 
     const writePageViewProps = {
         setTitle,
-        setContent,
-        onClick
+        onClick,
+        onChange
     };
 
     return <WritePageView {...writePageViewProps} />;
