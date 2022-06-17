@@ -4,7 +4,7 @@ import com.example.boardbackend.model.PostModel;
 
 import java.util.List;
 
-public interface BoardService {
+public interface PostService {
     List<PostModel> getPosts();
     /**
      * 게시물 전체 조회

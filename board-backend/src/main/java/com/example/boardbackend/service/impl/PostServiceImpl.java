@@ -2,7 +2,7 @@ package com.example.boardbackend.service.impl;
 
 import com.example.boardbackend.dao.PostDao;
 import com.example.boardbackend.model.PostModel;
-import com.example.boardbackend.service.BoardService;
+import com.example.boardbackend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class BoardServiceImpl implements BoardService {
+public class PostServiceImpl implements PostService {
     @Autowired
     PostDao postDao;
 

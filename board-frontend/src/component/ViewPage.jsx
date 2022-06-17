@@ -37,7 +37,7 @@ const ViewPage = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:8080/view/${id}`)
+                axios.delete(`http://localhost:8080/posts/${id}`)
                     .then((res) => {
                         Swal.fire(
                             '',
@@ -55,7 +55,7 @@ const ViewPage = () => {
     // 게시물 수정
     const updateClick = (e) => {
         e.preventDefault();
-        window.location = `/update/${id}`;
+        window.location = `/posts/update/${id}`;
     }
 
     // 목록으로 돌아가기 버튼
@@ -70,7 +70,7 @@ const ViewPage = () => {
             // 추천 버튼 클릭한 만큼 +1 증가한 값을 Backend에 put method 보내기
 
             axios({
-                url: `http://localhost:8080/view/${id}`,
+                url: `http://localhost:8080/posts/${id}`,
                 method: 'put'
             }).then((res) => {
                 setRecommendCnt(res.data);
@@ -83,7 +83,7 @@ const ViewPage = () => {
     // 게시물 id에 해당하는 게시물 data 가져오기
     useEffect(() => {
         axios({
-            url: `http://localhost:8080/view/${id}`,
+            url: `http://localhost:8080/posts/${id}`,
             method: 'get'
         }).then((res) => {
 

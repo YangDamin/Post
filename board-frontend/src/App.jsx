@@ -20,9 +20,9 @@ const App = () => {
                 <Header/>
                 <Routes>
                     <Route path="/" element={<MainPage/>}/>
-                    <Route path="/write" element={<WritePage/>}/>
-                    <Route path="/view/:id" element={<ViewPage/>}/>
-                    <Route path="/update/:id" element={<UpdatePage/>}/>
+                    <Route path="/posts/write" element={<WritePage/>}/>
+                    <Route path="/posts/:id" element={<ViewPage/>}/>
+                    <Route path="/posts/update/:id" element={<UpdatePage/>}/>
                 </Routes>
             </div>
         </BrowserRouter>

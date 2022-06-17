@@ -20,7 +20,7 @@ const MainPage = () => {
     const onClick = (e) => {
         e.preventDefault();
 
-        window.location.href = "/write";
+        window.location.href = "/posts/write";
     }
 
     const rowData = dataList.map((data) => {

@@ -29,7 +29,7 @@ const WritePage = () => {
             )
         } else {
             axios({
-                url: 'http://localhost:8080/write',
+                url: 'http://localhost:8080/posts/write',
                 method: "post",
                 data: {
                     "title": title,

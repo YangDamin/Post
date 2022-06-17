@@ -38,7 +38,7 @@ const UpdatePage = () => {
             )
         } else {
             axios({
-                url: `http://localhost:8080/update/${id}`,
+                url: `http://localhost:8080/posts/update/${id}`,
                 method: 'put',
                 data: {
                     "id": id,
@@ -53,7 +53,7 @@ const UpdatePage = () => {
                     'success'
                 )
                 setTimeout( () => {
-                    window.location = `/view/${id}`;
+                    window.location = `/posts/${id}`;
                 }, 2000)
             }).catch((error) => {
                 console.log(error);
@@ -71,7 +71,7 @@ const UpdatePage = () => {
     // 수정하기 위해 기존 값 가져오기
     useEffect(() => {
         axios({
-            url: `http://localhost:8080/update/${id}`,
+            url: `http://localhost:8080/posts/update/${id}`,
             method: 'get'
         }).then((res) => {
             setTitle(res.data.title);
