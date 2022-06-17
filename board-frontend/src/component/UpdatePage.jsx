@@ -53,7 +53,7 @@ const UpdatePage = () => {
                     'success'
                 )
                 setTimeout( () => {
-                    window.location = '/';
+                    window.location = `/view/${id}`;
                 }, 2000)
             }).catch((error) => {
                 console.log(error);
