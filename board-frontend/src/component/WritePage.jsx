@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-import create from 'zustand';
+import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import WritePageView from "./WritePageView";
@@ -14,6 +13,7 @@ const WritePage = () => {
     const setContent = useWriteStore((state) => state.setContent);
 
 
+    // 작성 버튼 event
     const onClick = (e) => {
         e.preventDefault();
 
@@ -51,18 +51,22 @@ const WritePage = () => {
         }
     }
 
-
-    const onChange = (e) => {
+    // 작성한 content set
+    const onChangeContent = (e) => {
         var contents = e.target.value;
         contents = contents.replace(/(\n|\r\n)/g, '<br>');      // 줄띄기하면 <br>로 저장되게
         setContent(contents);
     }
 
+    // 작성한 title set
+    const onChangeTitle = (e) => {
+        setTitle(e.target.value);
+    }
 
     const writePageViewProps = {
-        setTitle,
         onClick,
-        onChange
+        onChangeContent,
+        onChangeTitle
     };
 
     return <WritePageView {...writePageViewProps} />;

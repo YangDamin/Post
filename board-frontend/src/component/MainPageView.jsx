@@ -26,7 +26,6 @@ const MainPageView = ({
 
                     // 행 클릭 시, 해당 게시물로 이동
                     onRowClicked = {(e) => {
-                        // console.log(e.data.id)
                         window.location = `/posts/${e.data.id}`;
                     }}
                 >

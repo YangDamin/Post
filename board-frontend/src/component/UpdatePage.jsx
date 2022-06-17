@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
-import create from "zustand";
 import Swal from "sweetalert2";
 import UpdatePageView from "./UpdatePageView";
 import useUpdateStore from "../zustand/useUpdateStore";
@@ -62,10 +61,14 @@ const UpdatePage = () => {
     }
 
     // 수정한 content set해주기
-    const onChange = (e) => {
+    const onChangeContent = (e) => {
         var contents = e.target.value;
         contents = contents.replace(/(\n|\r\n)/g, '<br>');      // 줄띄기하면 <br>로 저장되게
         setUpdateContent(contents);
+    }
+
+    const onChangeTitle = (e) => {
+        setUpdateTitle(e.target.value);
     }
 
     // 수정하기 위해 기존 값 가져오기
@@ -85,9 +88,9 @@ const UpdatePage = () => {
     const updatePageViewProps = {
         title,
         content,
-        setUpdateTitle,
         updateOnClick,
-        onChange
+        onChangeContent,
+        onChangeTitle
     }
 
     return <UpdatePageView {...updatePageViewProps}/>;

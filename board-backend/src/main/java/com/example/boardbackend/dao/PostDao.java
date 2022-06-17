@@ -2,7 +2,6 @@ package com.example.boardbackend.dao;
 
 import com.example.boardbackend.model.PostModel;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
