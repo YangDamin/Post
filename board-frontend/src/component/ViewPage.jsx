@@ -66,8 +66,6 @@ const ViewPage = () => {
     // 추천 버튼 클릭 이벤트
     const recommendClick = (e) => {
         e.preventDefault();
-            // 추천 버튼 클릭한 만큼 +1 증가한 값을 Backend에 put method 보내기
-
             axios({
                 url: `http://localhost:8080/posts/${id}`,
                 method: 'put'

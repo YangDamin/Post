@@ -3,28 +3,36 @@
                             "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.boardbackend.dao.PostDao">
-    <insert id="insert" parameterType="PostModel" useGeneratedKeys="true" keyProperty="id">
-        insert into board (id, title, content, date, viewCnt, recommendCnt) values (#{id}, #{title}, #{content}, #{date}, #{viewCnt}, #{recommendCnt})
+    <insert id="addPost" parameterType="PostModel" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO BOARD (id, title, content, date, viewCnt, recommendCnt)
+        VALUES (#{id}, #{title}, #{content}, #{date}, #{viewCnt}, #{recommendCnt})
     </insert>
 
     <select id="getPosts" resultType="PostModel">
-        SELECT * FROM BOARD ORDER BY id DESC
+        SELECT id, title, content, date, viewCnt, recommendCnt
+        FROM BOARD
+        ORDER BY id DESC
     </select>
 
     <select id="viewPost" resultType="PostModel" parameterType="int">
-        SELECT * FROM BOARD WHERE id= #{id}
+        SELECT id, title, content, date, viewCnt, recommendCnt
+        FROM BOARD
+        WHERE id= #{id}
     </select>
 
     <delete id="deletePost">
-        DELETE FROM BOARD WHERE id = #{id}
+        DELETE FROM BOARD
+        WHERE id = #{id}
     </delete>
 
     <select id="infoPost" resultType="PostModel" parameterType="int">
-        SELECT * FROM BOARD WHERE id= #{id}
+        SELECT id, title, content, date, viewCnt, recommendCnt
+        FROM BOARD
+        WHERE id= #{id}
     </select>
 
     <update id="updatePost" parameterType="PostModel">
-        UPDATE BOARD set
+        UPDATE BOARD SET
         title = #{title},
         content = #{content},
         date = #{date}
@@ -32,13 +40,13 @@
     </update>
 
     <update id="updateViewCnt" parameterType="PostModel">
-        UPDATE BOARD set
+        UPDATE BOARD SET
         viewCnt = #{viewCnt}+1
         WHERE id = #{id}
     </update>
 
     <update id="increaseRecommend" parameterType="int">
-        UPDATE BOARD set
+        UPDATE BOARD SET
         recommendCnt = #{recommendCnt}+1
         WHERE id = #{id}
     </update>

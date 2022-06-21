@@ -67,6 +67,7 @@ const UpdatePage = () => {
         setUpdateContent(contents);
     }
 
+    // 수정한 title set해주기
     const onChangeTitle = (e) => {
         setUpdateTitle(e.target.value);
     }

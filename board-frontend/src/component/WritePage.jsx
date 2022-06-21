@@ -44,7 +44,7 @@ const WritePage = () => {
                 )
                 setTimeout( () => {
                     window.location ='/';
-                }, 2000)
+                }, 2000)     // 2초 후 이동
             }).catch((error) => {
                 console.log(error);
             })

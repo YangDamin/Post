@@ -11,7 +11,7 @@ public interface PostService {
      * List 형식으로 return
      * */
 
-    void insert(PostModel postModel);
+    void addPost(PostModel postModel);
     /**
      * 게시물 작성
      * */

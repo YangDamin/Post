@@ -19,13 +19,13 @@ public class PostServiceImpl implements PostService {
         return postDao.getPosts();
     }
 
-    public void insert(PostModel postModel) {
-        postDao.insert(postModel);
+    public void addPost(PostModel postModel) {
+        postDao.addPost(postModel);
     }
 
     public void updateViewCnt(int id) {
         postDao.updateViewCnt(postDao.viewPost(id));
-    }
+    }   // 조회수
 
     public PostModel viewPost(int id) {
         return postDao.viewPost(id);
@@ -49,5 +49,5 @@ public class PostServiceImpl implements PostService {
 
     public int recommendCnt(int id){
         return postDao.viewPost(id).getRecommendCnt();
-    }
+    } // 추천수
 }
