@@ -29,8 +29,7 @@ public class MainController {
     }
 
     // 게시물 작성
-    @PostMapping("/posts/write")
-    // @PostMapping("/posts")
+    @PostMapping("/posts")
     public void insert(@RequestBody PostModel postModel) {
         postService.addPost(postModel);
     }
@@ -51,22 +50,19 @@ public class MainController {
     }
 
     // 게시물 정보 보내기
-    @GetMapping("/posts/update/{id}")
-    // @GetMapping("/posts/detail/{id}")
+     @GetMapping("/posts/detail/{id}")
     public PostModel infoPost(@PathVariable("id") int id) {
         return postService.infoPost(id);
     }
 
     // 게시물 수정하기
-    @PutMapping("/posts/update/{id}")
-    // @PutMapping("/posts/detail/{id}")
+     @PutMapping("/posts/detail/{id}")
     public void updatePost(@RequestBody PostModel postModel) {
         postService.updatePost(postModel);
     }
 
     // 추천 수 버튼 클릭한 만큼 증가
-    @PutMapping("/posts/{id}")
-    // @PutMapping("/posts/recommend")
+     @PutMapping("/posts/recommend")
     public int increaseRecommend(@RequestParam("id") int id) {
         postService.increaseRecommend(id);
         return postService.recommendCnt(id);
