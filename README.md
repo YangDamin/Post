@@ -8,7 +8,6 @@
   * mysql
 * Frontend
   * React
-  * AGGrid
   * 패키지 : webpack, babel
 ----
 
