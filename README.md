@@ -8,6 +8,7 @@
   * mysql
 * Frontend
   * React
+  * Javascript, CSS, Bootstrap
   * 패키지 : webpack, babel
 ----
 
